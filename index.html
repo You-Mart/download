@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download YouMart App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 0 15px;
+        }
+        header {
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+        .download-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 300px;
+        }
+        .download-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #95a5a6;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .logo {
+                max-width: 150px;
+            }
+            .download-btn {
+                font-size: 1rem;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="youmart_bg_removed.png" alt="YouMart Logo" class="logo">
+            <h1>Download YouMart App</h1>
+            <p>Get the latest version of our app by clicking the button below.</p>
+        </header>
+
+        <main>
+            <button id="download-button" class="download-btn">Download App</button>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 YouMart. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('download-button').addEventListener('click', () => {
+            const s3Url = 'https://youmart-app.s3.ap-southeast-1.amazonaws.com/YouMart.apk';
+            
+            // Create a temporary anchor element
+            const link = document.createElement('a');
+            link.href = s3Url;
+            link.download = 'YouMart.apk'; // Set the desired filename for the download
+            
+            // Append to the document, trigger the click, and remove the element
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>
